@@ -1,7 +1,9 @@
 import { createUser, uploadPhoto } from './utils';
 
-export default async function handleProfileSignup() {
-  const user = await createUser();
-  const photo = await uploadPhoto();
-  console.log(`${photo.body} ${user.firstName} ${user.lastName}`);
+export default function handleProfileSignup() {
+  return Promise.all([uploadPhoto(), createUser()])
+    .then((resolve) => {
+      console.log(`${resolve[0].body} ${resolve[1].firstName} ${resolve[1].lastName}`);
+    })
+    .catch(() => console.log('error had occured'));
 }
