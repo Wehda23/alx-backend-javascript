@@ -5,8 +5,11 @@ export default class HolbertonCourse {
     this.students = students;
   }
 
+  /**
+   * @param {Number} length
+   */
   set length(length) {
-    if (!(length instanceof Number)) {
+    if (typeof length !== 'number') {
       throw new TypeError('Length must be a number');
     }
     this._length = length;
@@ -16,9 +19,12 @@ export default class HolbertonCourse {
     return this._length;
   }
 
+  /**
+   * @param {Array} students
+   */
   set students(students) {
     if (!(students instanceof Array)) {
-        throw new TypeError('Students must be an array');
+      throw new TypeError('Students must be an array');
     }
     this._students = students;
   }
@@ -27,8 +33,11 @@ export default class HolbertonCourse {
     return this._students;
   }
 
+  /**
+   * @param {String} name
+   */
   set name(name) {
-    if (!(name instanceof String)) {
+    if (typeof name !== 'string') {
       throw new TypeError('Name must be a string');
     }
     this._name = name;
