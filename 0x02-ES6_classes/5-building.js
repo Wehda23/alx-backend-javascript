@@ -2,11 +2,15 @@ export default class Building {
   /**
      * @param {Number} sqrt Square meter of the building
      */
-  constructor(sqrt) {
-    if (this.evacuationWarningMessage !== 'function') {
-      throw Error('Class extending Building must override evacuationWarningMessage');
+  constructor(sqft) {
+    if (this.constructor !== Building) {
+      if (typeof this.evacuationWarningMessage !== 'function') {
+        throw new Error(
+          'Class extending Building must override evacuationWarningMessage',
+        );
+      }
     }
-    this.sqrt = sqrt;
+    this.sqft = sqft;
   }
 
   /**
