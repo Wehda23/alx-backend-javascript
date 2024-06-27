@@ -22,9 +22,6 @@ export default class Car {
      * @param {String} value - Set the brand of the car
      */
   set brand(value) {
-    if (typeof value !== 'string') {
-      throw new Error('Brand must be a string');
-    }
     this._brand = value;
   }
 
@@ -39,9 +36,6 @@ export default class Car {
      * @param {String} value - Set the motor of the car
      */
   set motor(value) {
-    if (typeof value !== 'string') {
-      throw new Error('motor must be a string');
-    }
     this._motor = value;
   }
 
@@ -56,9 +50,6 @@ export default class Car {
      * @param {String} value - Set the color of the car
      */
   set color(value) {
-    if (typeof value !== 'string') {
-      throw new Error('color must be a string');
-    }
     this._color = value;
   }
 
@@ -66,6 +57,6 @@ export default class Car {
      * @returns {Car} New Car Class or extended Car sub class
      */
   cloneCar() {
-    return new this.constructor(this.brand, this.motor, this.color);
+    return new this.constructor(undefined, undefined, undefined);
   }
 }
