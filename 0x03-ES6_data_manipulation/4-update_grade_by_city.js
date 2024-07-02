@@ -1,20 +1,18 @@
-import getStudentsByLocation from './2-get_students_by_loc';
-
-const updateStudentGradeByCity = (students, location, data) => {
-  if (!(students instanceof Array)) {
-    return [];
-  }
-  // Filter students
-  const filterStudents = getStudentsByLocation(students, location);
-  // Update the objects
-  const updatedStudents = filterStudents.map((student) => {
-    const gradeData = data.find((newData) => newData.studentId === student.id);
+function updateStudentGradeByCity(students, city, newGrades) {
+  const studentsInCity = students.filter((student) => student.location === city);
+  return studentsInCity.map((student) => {
+    const filteredGrades = newGrades.filter((grade) => grade.studentId === student.id);
+    if (filteredGrades.length > 0) {
+      return {
+        ...student,
+        grade: filteredGrades[0].grade,
+      };
+    }
     return {
       ...student,
-      grade: gradeData ? gradeData.grade : 'N/A',
+      grade: 'N/A',
     };
   });
-  return updatedStudents;
-};
+}
 
 export default updateStudentGradeByCity;
