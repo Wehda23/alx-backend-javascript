@@ -1,4 +1,6 @@
 function updateStudentGradeByCity(students, city, newGrades) {
+  if (!(students instanceof Array)) return [];
+
   const studentsInCity = students.filter((student) => student.location === city);
   return studentsInCity.map((student) => {
     const filteredGrades = newGrades.filter((grade) => grade.studentId === student.id);
